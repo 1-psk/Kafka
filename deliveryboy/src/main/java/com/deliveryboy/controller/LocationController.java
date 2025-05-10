@@ -22,7 +22,13 @@ public class LocationController {
     @PostMapping("/update")
     public ResponseEntity<?> updateLocation(){
 
-        this.kafkaService.updateLocation("( " + Math.round(Math.random() * 100) + " , " + Math.round(Math.random() * 100) + ")");
+        //this.kafkaService.updateLocation("( " + Math.round(Math.random() * 100) + " , " + Math.round(Math.random() * 100) + ")");
+
+        for(int i = 1; i <= 100000; i++){
+            this.kafkaService.updateLocation("( " + Math.round(Math.random() * 100) + " , " + Math.round(Math.random() * 100) + ")");
+        }
+
+
         return new ResponseEntity<>(Map.of("message", "Location updated"), HttpStatus.OK);
 
     }
